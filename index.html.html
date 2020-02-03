@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrgChart DITA</title>
+    <style>
+        html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Helvetica;
+}
+
+#tree {
+    width: 100%;
+    height: 100%;
+}
+
+
+    </style>
+
+</head>
+<body>
+    
+	<script type="text/javascript" src="OrgChart.js"></script>
+
+<div id="tree"></div>
+    <script>
+    
+	
+	
+window.onload = function () {
+    var nodes = [
+        { id: 1, name: "Михаил", title: "Директор дирекции", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "Nord Star 21А-54", img: "https://cdn.balkan.app/shared/1.jpg" },
+        { id: 2, pid: 1, name: "Михаил", title: "Начальник управления методологии", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "Nord Star 21А-54",  img: "https://cdn.balkan.app/shared/2.jpg" },
+        { id: 3, pid: 1, name: "Михаил", title: "Начальник управления", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "Nord Star 21А-54",  img: "https://cdn.balkan.app/shared/3.jpg" },
+        { id: 4, pid: 1, name: "Михаил", title: "Начальник управления", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-27",  email: "jay@domain.com", img: "https://cdn.balkan.app/shared/4.jpg" },
+        { id: 5, pid: 2, name: "Михаил", title: "Бизнес-аналитик", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-10", img: "https://cdn.balkan.app/shared/5.jpg" },
+        { id: 6, pid: 2, name: "Михаил", title: "Бизнес-аналитик", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-08", img: "https://cdn.balkan.app/shared/6.jpg" },
+        { id: 7, pid: 2, name: "Михаил", title: "Бизнес-аналитик", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-56", img: "https://cdn.balkan.app/shared/7.jpg" },
+        { id: 8, pid: 3, name: "Михаил", title: "Старший Архитектор", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-75", email: "kohen@domain.com", img: "https://cdn.balkan.app/shared/8.jpg" },
+        { id: 9, pid: 3, name: "Михаил", title: "Старший Архитектор", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-43", img: "https://cdn.balkan.app/shared/9.jpg" },
+        { id: 10, pid: 4, name: "Михаил", title: "Специалист", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-91", img: "https://cdn.balkan.app/shared/14.jpg" },
+        { id: 11, pid: 4, name: "Михаил", title: "Специалист", email: "michael@domain, michael@domain", phone: "Тел. 8999999999", phone2: "Тел. 899977777", office: "SOK City 313-21", img: "https://cdn.balkan.app/shared/15.jpg" },
+
+    ];
+
+
+
+    for (var i = 0; i < nodes.length; i++) {
+        nodes[i].field_number_children = childCount(nodes[i].id);
+    }
+
+    function childCount(id) {
+        let count = 0;
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].pid == id) {
+                count++;
+                count += childCount(nodes[i].id);
+            }
+        }
+
+        return count;
+    }
+
+	for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        switch (node.title) {
+            case "Начальник управления методологии":
+                node.tags = ["Отдел методолошического обеспечения"];
+                break;
+            case "Начальник управления методологии":
+            case "Бизнес-аналитик":
+                node.tags = ["Отдел методолошического обеспечения"];
+                break;
+        }
+    }
+	
+    OrgChart.templates.rony.field_number_children = '<circle cx="60" cy="110" r="15" fill="#F57C00"></circle><text fill="#ffffff" x="60" y="115" text-anchor="middle">{val}</text>';
+
+    var chart = new OrgChart(document.getElementById("tree"), {
+        template: "rony",
+        collapse: {
+            level: 3
+        },
+        nodeBinding: {
+            field_0: "name",
+            field_1: "title",
+			field_2: "phone",
+			field_3: "phone2",
+			field_4: "office",
+            img_0: "img",
+            field_number_children: "field_number_children"
+        },
+        nodes: nodes
+    });
+};
+    </script>
+</body>
+</html>
