@@ -1,51 +1,76 @@
 [
-    {
-        "id": "1",
-        "text": "Chairman & CEO",
-        "title": "Henry Bennett"
+	{
+        "id": "main",
+        "text": { 
+            "name": "1", 
+            "structure": "1",
+            "position": "1",
+            "phone": "1",
+            "Officephone": "1",
+            "mail": "1",
+            "RNmail": "1",
+            "office": "1",
+            "place": "1"
+        },
+        "photo": "samples/common/foto/1.png",
+        "width": 350, 
+        "height": 170
     },
     {
-        "id": "2",
-        "text": "Manager",
-        "title": "Mildred Kim"
+        "id" : "1",
+        "text" : {
+            "name" : "TBD",
+            "structure": "Управление по архитектуре ИТ-решений",
+            "position": "TBD",
+            "phone": "-",
+            "Officephone": "-",
+            "mail": "-",
+            "RNmail": "-",
+            "office": "-",
+            "place": "-"
+        },
+        "photo": "samples/common/foto/головастик2.png",
+        "parent": "main",
+        "width": 350,
+        "height": 170,
+        "open": false
     },
     {
-        "id": "3",
-        "text": "Technical Director",
-        "title": "Jerry Wagner"
+        "id" : "1.1",
+        "text" : {
+            "name" : "1",
+            "structure": "Отдел архитектуры систем ФХД",
+            "position": "Начальник отдела",
+            "phone": "1",
+            "Officephone": "-",
+            "mail": "1",
+            "RNmail": "1",
+            "office": "1",
+            "place": "Место: 1"
+        },
+        "photo": "samples/common/foto/1.png",
+        "parent": "1",
+        "width": 350,
+        "height": 170
     },
     {
-        "id": "2.1",
-        "text": "Marketer",
-        "title": "Charles Little"
-    },
-    {
-        "id": "3.1",
-        "text": "Team Lead ",
-        "title": "Jonathan Lane"
-    },
-    {
-        "id": "1-2",
-        "from": "1",
-        "to": "2",
-        "type": "line"
-    },
-    {
-        "id": "1-3",
-        "from": "1",
-        "to": "3",
-        "type": "line"
-    },
-    {
-        "id": "2-2.1",
-        "from": "2",
-        "to": "2.1",
-        "type": "line"
-    },
-    {
-        "id": "3-3.1",
-        "from": "3",
-        "to": "3.1",
-        "type": "line"
+        "id" : "1.1.1",
+        "text" : {
+            "name" : "1",
+            "structure": "Отдел архитектуры систем ФХД",
+            "position": "Старший архитектор",
+            "phone": "-",
+            "Officephone": "1",
+            "mail": "1",
+            "RNmail": "1",
+            "office": "1",
+            "place": "Место: 1"
+        },
+        "photo": "samples/common/foto/1.png",
+        "parent": "1.1",
+        "dir": "vertical",
+        "width": 350,
+        "height": 170
+        
     }
 ]
